@@ -1,0 +1,44 @@
+@startuml Class diagram
+
+title Sistema de logística de trem
+
+class Trem {
+  - tipo: String
+  - vagoes: List<Vagao>
+  - capacidade: int
+  - inicioTrabalho: Date
+  - rota: Rota
+  - velocidade: double
+  - localizacao: double
+
+  + abrirPortas()
+  + fecharPortas()
+  + acelerar()
+  + definirVelocidade()
+  + desacelerar()
+  + parar()
+  + definirRota(Rota)
+  + obterLocalizacao()
+}
+
+class Vagao {
+  - motor: Motor
+  - portas: int
+  - capacidadeCarga: double
+}
+
+class Motor {
+  - tipoMotor: String
+  - potencia: double
+}
+
+class Rota {
+  - inicioKm: double
+  - fimKm: double
+}
+
+Trem "1" --o "n" Vagao : contém
+Vagao "1" --o "1" Motor : possui
+Trem "1" --o "1" Rota : segue
+
+@enduml

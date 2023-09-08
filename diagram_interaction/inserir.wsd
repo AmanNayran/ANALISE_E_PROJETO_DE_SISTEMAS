@@ -1,0 +1,17 @@
+@startuml Interaction diagram | Sistema de registro de pontos
+
+title Subfluxo inserir ponto
+skinparam sequenceMessageAlign center
+
+actor Funcionário
+participant Sistema
+
+Funcionário <-- Sistema: Mostra tela com campos
+Funcionário -> Sistema: Preenche campos
+
+Funcionário <-- Sistema: Mostra dados preenchidos e pede confirmação
+Funcionário -> Sistema: Confirma inclusão
+
+Funcionário <-- Sistema: Mostra mensagem de sucesso
+
+@enduml

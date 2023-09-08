@@ -1,0 +1,20 @@
+@startuml Interaction diagram | Sistema de registro de pontos
+
+title Subfluxo alterar ponto
+skinparam sequenceMessageAlign center
+
+actor Funcionário
+participant Sistema
+
+Funcionário <-- Sistema : Mostra lista com os últimos registros de ponto
+
+Funcionário -> Sistema : Seleciona ponto a ser alterado
+Funcionário <-- Sistema : Mostra tela com os dados do ponto (hora de início, hora de término, data, número do projeto)
+
+Funcionário -> Sistema : Altera dados necessários
+Funcionário <-- Sistema : Mostra dados alterados e pede confirmação
+
+Funcionário -> Sistema : Confirma alteração
+Funcionário <-- Sistema : Mostra mensagem de sucesso
+
+@enduml

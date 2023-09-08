@@ -1,0 +1,35 @@
+@startuml Sequence diagram
+
+title Sistema de registro de pontos
+skinparam sequenceMessageAlign center
+
+actor Funcionário
+participant Sistema
+
+Funcionário -> Sistema: manterDados()
+Funcionário <- Sistema: ultimosRegistro(), alterar(), remover(), inserir()
+
+Funcionário -> Sistema: inserir()
+Funcionário <- Sistema: formulario(inicio: date, termino: date, data: date, numProjeto: int)
+
+Funcionário -> Sistema: formularioPreenchido(inicio, termino, data, numProjeto)
+Funcionário <- Sistema: formularioPreenchido(inicio, termino, data, numProjeto), confirmar()
+
+Funcionário -> Sistema: confirma
+Funcionário <- Sistema: mensagem(), volta ao menu
+
+note over Funcionário, Sistema
+
+**Contrato de operação**
+Operação: manterDados()
+Referências cruzadas: Caso de uso que cria um registro de ponto
+Pré-condições: Existe um funcionário cadastrado
+Pós-Condições:
+- Uma instância “ponto” foi criada;
+- O Funcionário que criou “ponto” foi associado à instância;
+- “ponto” foi associada ao registro de ponto do Funcionário.
+
+end note
+
+
+@enduml
