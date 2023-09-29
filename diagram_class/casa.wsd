@@ -1,0 +1,47 @@
+@startuml Class diagram
+
+title Sistema de logística de trem
+
+class Moradia {
+    + Area(): Double
+    + Endereco(): Endereco
+}
+
+class Casa {
+    + TelhadoAreaExterna(): Telhado
+    + TelhadoAreaInterna(): Telhado
+    + ParedeQuarto(): Parede
+    + ParedeBanheiro(): Parede
+    + ParedeCozinha(): Parede
+    + EspelhoCorredor(): Espelho
+}
+
+class Parede {
+    + Altura(): Double
+    + Largura(): Double
+    + Acabamento(): Acabamento
+}
+
+class Telhado {
+    + TipoTelha(): TipoTelha
+    + Area(): Double
+}
+
+class Espelho {
+    + TipoVidro(): TipoVidro
+    + Altura(): Double
+    + Largura(): Double
+}
+
+Moradia <|-- Casa
+
+Casa o-- Espelho : EspelhoCorredor
+
+Casa *-- Parede : ParedeQuarto
+Casa *-- Parede : ParedeBanheiro
+Casa *-- Parede : ParedeCozinha
+
+Casa *-- Telhado : TelhadoAreaExterna
+Casa *-- Telhado : TelhadoAreaInterna
+
+@enduml

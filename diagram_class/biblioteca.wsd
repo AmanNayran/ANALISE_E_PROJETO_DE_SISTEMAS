@@ -1,0 +1,55 @@
+@startuml Class diagram
+
+title Sistema de logística de uma biblioteca
+
+class Empresa {}
+
+class Biblioteca {
+  + dadosFuncionario()
+}
+
+class Funcionario {
+  + emprestarPublicaçao()
+  + resgatarPublicaçao()
+  + reservarPublicaçao()
+  + excluirReserva()
+}
+
+class Emprestimo {
+  - quantidadePublicaçao: int
+  - inicioPrazo: Date
+  - fimPrazo: Date
+  - status: bool
+}
+
+class Reserva {
+  - data: Date
+
+  + alerta()
+}
+
+class Publicaçao {
+  - tipo: Categoria
+  - exemplar: Exemplar
+}
+
+class Categoria {
+  - tipo: String
+}
+
+
+class Exemplar {
+  - nome: String
+  - quantidade: int
+}
+
+Empresa "1" --o "n" Biblioteca : contém
+Biblioteca "1" --o "n" Funcionario : contém
+Funcionario "1" --o "n" Emprestimo : faz
+Emprestimo "1" --* "n" Publicaçao : tem
+Funcionario "1" --o "n" Reserva : faz
+Reserva "1" --* "n" Publicaçao : tem
+Publicaçao "n" --o "1" Categoria : possui
+Publicaçao "1" --o "n" Exemplar : possui
+
+@enduml
